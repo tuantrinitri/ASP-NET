@@ -37,7 +37,7 @@ namespace web2.Controllers
             student.Id = std.Id;
             student.Name = std.Name;
             student.Age = std.Age;
-            
+
             //var Id = std.Id;
             //var Name = std.Name;
             //var Age = std.Age;
@@ -45,6 +45,22 @@ namespace web2.Controllers
             //var courseToUpdate = studentList.Union,
 
             return RedirectToAction("Index");
+        }
+        [HttpGet]
+        public ActionResult Details(int Id)
+        {
+            var std = studentList.Where(s => s.Id == Id).FirstOrDefault();
+            return View(std);
+        }
+
+        public ActionResult Create()
+        {
+            return View();
+        }
+        public ActionResult Delete(int Id)
+        {
+              var std = studentList.Where(s => s.Id == Id).FirstOrDefault();
+            return View(std);
         }
     }
 }
